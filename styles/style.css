@@ -1,0 +1,100 @@
+/* default styles for celsqueeze */
+
+body {
+    font-family: 'Oswald', sans-serif;
+}
+
+#logo {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+}
+
+#header--end {
+    color: blue;
+    font-weight: 400;
+  
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+/* Body */
+
+#mainContainer {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#main-Container {
+    display: flex;
+}
+
+#header2 {
+    text-align: center;
+    margin: 30px 0px 30px 0px;
+    color: blue;
+    font-weight: 400;
+}
+
+#container-Left {
+    width: 600px;
+    margin-right: 40px;
+}
+
+#container-Right {
+    max-width: 250px;
+}
+
+#container-Center {
+    width: 100%;
+    margin-right: 40px;
+}
+
+#container-Supply {
+    background-color:aqua;
+    padding:10px;
+    display: flex;
+    justify-content: center;
+    border-top-left-radius: 50% 2%;
+    border-top-right-radius: 50% 2%;    
+    border-bottom-left-radius: 50% 2%;
+    border-bottom-right-radius: 50% 2%; 
+}
+
+.li-End {
+    list-style-type: none;
+    padding-top:5px;
+}
+
+/* #container-Supply-Center {
+    
+} */
+
+/* charts */
+#chart1 {
+    width:100%;
+    max-width:100%;
+    padding-bottom: 20px;
+  }
+
+  /* cards */
+
+.cards {
+    margin-bottom: 50px;
+    background-color:aqua;
+    padding:10px;
+    border-top-left-radius: 50% 2%;
+    border-top-right-radius: 50% 2%;    
+    border-bottom-left-radius: 50% 2%;
+    border-bottom-right-radius: 50% 2%; 
+}
+
+.about-Header {
+
+}
+
+.about-Content {
+
+}
