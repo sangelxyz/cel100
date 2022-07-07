@@ -22,9 +22,15 @@ body {
 
 /* Body */
 
+<<<<<<< HEAD
 #mainContainer {
     margin-left: 50px;
     margin-right: 50px;
+=======
+#root {
+    margin-left: 20px;
+    margin-right: 20px;
+>>>>>>> bdc42c285e8fc0ee43f1d78480eb545f0d3958c4
 }
 
 #main-Container {
