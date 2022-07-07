@@ -2,7 +2,6 @@
 //import { GetServerSideProps, NextPage } from "next";
 
 
-<<<<<<< HEAD
 
 
 
@@ -31,12 +30,6 @@ function Page(props) {
     //console.log(getServerSideProps())
     //getServerSideProps().then(msg => console.log(msg))
 
-=======
-function Page(props) {
-    //console.log(getServerSideProps())
-    //getServerSideProps().then(msg => console.log(msg))
-    return (<>data</>);
->>>>>>> bdc42c285e8fc0ee43f1d78480eb545f0d3958c4
 }
 
 // export async function getServerSideProps() {
@@ -49,5 +42,4 @@ function Page(props) {
 
 
 export default Page
-
 
