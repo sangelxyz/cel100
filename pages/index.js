@@ -105,7 +105,6 @@ Community Driven, Community Owned
     <p>Supply On Exchanges:</p>
     <div id="container-Supply">
         <ul>
-          <li>FTX: </li>
           {exchanges.map(key=> <li key={key}>{key}: {props.celWallets[key].balance.toLocaleString('en-US')}</li>)}
           <li className='li-End'>Total: {exchanges.map(key => props.celWallets[key].balance).reduce((total, num)=> total+num ).toLocaleString('en-US')} CEL</li>
         </ul>
