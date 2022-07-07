@@ -1,14 +1,14 @@
 import Chart from 'chart.js/auto';
 
-import Blog from './blog.js'
-import Image from 'next/image';
+import Blog from '../src/blog.js'
+
 import contractReq from '../src/contractReq.js'
 import celWallets from '../src/celWallets.js'
 
 import Blogger from '../src/blogger.js'
 
-var xValues = [50,60,70,80,90,100,110,120,130,140,150];
-var yValues = [7,8,8,9,9,9,10,11,14,14,15];
+var xValues = [50,60,70,80,90,100,110,120,130,140,150]
+var yValues = [7,8,8,9,9,9,10,11,14,14,15]
 
 new Chart("chart1", {
   type: "line",

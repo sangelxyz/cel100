@@ -1,5 +1,4 @@
-import styles from '../styles/style.css'
-
+import '../styles/style.css'
 
 function MyApp({ Component, pageProps }) {
   console.log(pageProps)
