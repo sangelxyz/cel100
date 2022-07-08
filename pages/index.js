@@ -7,7 +7,9 @@ import celWallets from '../src/celWallets.js'
 
 import Blogger from '../src/blogger.js'
 import ftxConnection from '../src/ftxApi.js';
+import twitterConnection from '../src/twitter.js';
 
+import Twitterfeed from '../src/twitterFeed.js';
 
 var xValues = [50,60,70,80,90,100,110,120,130,140,150]
 var yValues = [7,8,8,9,9,9,10,11,14,14,15]
@@ -50,26 +52,7 @@ new Chart("chart1", {
 
 
 export default function Home(props) {
-console.log(props)
-//   return (
-//     <>
-//       <Head>
-//         <title>My page title</title>
-//         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-//         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" 
-// integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" 
-// crossOrigin="anonymous"></link>
 
-// <link rel="preconnect" href="https://fonts.googleapis.com" />
-//     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-//     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap" rel="stylesheet" />
-//       </Head>
-//         <main><canvas id="chart1"></canvas>
-//       </main>
-//     </>
-//   )
-
-//console.log(props.dataExchange.result[0].balance/1000000000000000000) 
 const exchanges = Object.keys(props.celWallets)
 
 return (<>
@@ -139,39 +122,10 @@ Community Driven, Community Owned
 
   <div className="my-3 p-3 bg-body rounded shadow-sm">
     <h6 className="border-bottom pb-2 mb-0">Twitter #CelShortSqueeze</h6>
-    <div className="d-flex text-muted pt-3">
-      <svg className="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
 
-      <div className="pb-3 mb-0 small lh-sm border-bottom w-100">
-        <div className="d-flex justify-content-between">
-          <strong className="text-gray-dark">Full Name</strong>
-          <a href="#">Follow</a>
-        </div>
-        <span className="d-block">@username</span>
-      </div>
-    </div>
-    <div className="d-flex text-muted pt-3">
-      <svg className="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+  <Twitterfeed data={props.twitterData}/>
 
-      <div className="pb-3 mb-0 small lh-sm border-bottom w-100">
-        <div className="d-flex justify-content-between">
-          <strong className="text-gray-dark">Full Name</strong>
-          <a href="#">Follow</a>
-        </div>
-        <span className="d-block">@username</span>
-      </div>
-    </div>
-    <div className="d-flex text-muted pt-3">
-      <svg className="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-
-      <div className="pb-3 mb-0 small lh-sm border-bottom w-100">
-        <div className="d-flex justify-content-between">
-          <strong className="text-gray-dark">Full Name</strong>
-          <a href="#">Follow</a>
-        </div>
-        <span className="d-block">@username</span>
-      </div>
-    </div>
+   
     <small className="d-block text-end mt-3">
       <a href="#">All suggestions</a>
     </small>
@@ -222,6 +176,23 @@ export async function getStaticProps() {
 const celContractAddress = '0xaaaebe6fe48e54f431b0c390cfaf0b017d09d42d'
 
 
+// Mil8lD2Y4imjBfHD5P9GTEEDU
+// sec: zSVdMN4Gd7kNJUlqOuISlRB3TUdqxyg6jMZ88QHsgCeZj4JZvf
+// 
+
+// const twitterToken = 'AAAAAAAAAAAAAAAAAAAAABtdegEAAAAAKSOfIB%2F8FPCiK%2FDzmftoQ978hVU%3Dul2ewYvCulZGaGMbhRa2JTq6hOBRgjMAckO2REIPqA9Mip3akP'
+
+//   fetch('https://api.twitter.com/2/tweets/search/recent?query='+encodeURIComponent('#celshortsqueeze'),{
+//     method: 'GET', headers: {
+//                     'Authorization': "Bearer "+twitterToken
+//                     }})
+//   .then(res=> res.json())
+//   .then(data=> console.log(data))
+//   .catch(err=>console.log(err))
+
+
+
+
   // Fetch data from external API
   //AIzaSyB-f9BX75MFT_x65c1-nrK0uWocH-JtCT0
   // end point.
@@ -244,25 +215,22 @@ const celContractAddress = '0xaaaebe6fe48e54f431b0c390cfaf0b017d09d42d'
   //               'Gateio' : {address: '0x0d0707963952f2fba59dd06f2b425ace40b492fe',balance:0}
   // }
 
-//console.log('https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=0xaaaebe6fe48e54f431b0c390cfaf0b017d09d42d&address='+wallets.join(',')+',&apikey=V18NFTEIDE94PA5V8ZGBCSZGJXCA5INQVC')
-  //EthScan
-
-//console.log(wallets.join(','))
-
-  // FTX
-  //https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=0xaaaebe6fe48e54f431b0c390cfaf0b017d09d42d&address=0x2faf487a4414fe77e2327f0bf4ae2a264a776ad2&apikey=V18NFTEIDE94PA5V8ZGBCSZGJXCA5INQVC
-  // const resExchange = await fetch('https://api.etherscan.io/api?module=account&action=balancemulti&contractaddress=0xaaaebe6fe48e54f431b0c390cfaf0b017d09d42d&address='+wallets.join(',')+',&apikey=V18NFTEIDE94PA5V8ZGBCSZGJXCA5INQVC')
-  // const dataExchange = await resExchange.json()
 
   let promised = [] 
 
   
   let ftxData = {}
-  //Blogger
+  let twitterData = {}
+  // ftx
   let data = {}
   promised.push(ftxConnection())
+  
+  // blogger
   promised.push(Blogger('https://www.googleapis.com/blogger/v3/blogs/4828320755593939336/posts?key=AIzaSyB-f9BX75MFT_x65c1-nrK0uWocH-JtCT0'))
   
+  //twitter
+  promised.push(twitterConnection())
+
 
   for(const exchangeWallet of Object.keys(celWallets)) {     
     promised.push(contractReq(celContractAddress, celWallets[exchangeWallet].address, exchangeWallet))
@@ -274,18 +242,21 @@ const celContractAddress = '0xaaaebe6fe48e54f431b0c390cfaf0b017d09d42d'
       if(i.json){
         // blog
         data=i.json
-        //console.log(data)
         continue
       }
       else if (i.ftx){
         ftxData=i.ftx
         continue
       }
+      else if (i.twitter){
+        twitterData=i.twitter
+        continue
+      }
       celWallets[i.walletId].balance=Number(i.total)
     }
   })
 
-  return { props: { data,  celWallets, ftxData}, revalidate: 60 }
+  return { props: { data,  celWallets, ftxData, twitterData}, revalidate: 60 }
   // Pass data to the page via props
 
     

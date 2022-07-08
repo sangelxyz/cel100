@@ -1,4 +1,4 @@
-// ERC20 ABI Spe
+// ERC20 ABI Spec
 // https://ethereumdev.io/abi-for-erc20-contract-on-ethereum/
 
 

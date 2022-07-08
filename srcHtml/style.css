@@ -37,3 +37,8 @@ body {
 #container-Right {
     width: 50%;
 }
+
+/* Twitter */
+.twitterUserIcon {
+    margin-right:20px;
+}

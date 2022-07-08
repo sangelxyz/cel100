@@ -24,17 +24,6 @@ function ftxConnection() {
         const sha256Hasher = crypto.createHmac("sha256", ftxApiSecret);
         const hash = sha256Hasher.update(signature).digest("hex");
 
-        console.log(ts)
-        console.log(hash)
-        //console.log('sssssssssssssssssss')
-        //   const header = {
-        //     headers: {
-        //     "FTX-KEY": ftxApiKey,
-        //     "FTX-SIGN": hash,
-        //     "FTX-TS" : ts.toString(),
-        //   }
-        // }
-
 
         fetch(ftxAPI+ftxEndPoint,
         {
