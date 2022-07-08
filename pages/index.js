@@ -6,6 +6,8 @@ import contractReq from '../src/contractReq.js'
 import celWallets from '../src/celWallets.js'
 
 import Blogger from '../src/blogger.js'
+import ftxConnection from '../src/ftxApi.js';
+
 
 var xValues = [50,60,70,80,90,100,110,120,130,140,150]
 var yValues = [7,8,8,9,9,9,10,11,14,14,15]
@@ -48,6 +50,7 @@ new Chart("chart1", {
 
 
 export default function Home(props) {
+console.log(props)
 //   return (
 //     <>
 //       <Head>
@@ -108,8 +111,16 @@ Community Driven, Community Owned
           {exchanges.map(key=> <li key={key}>{key}: {props.celWallets[key].balance.toLocaleString('en-US')}</li>)}
           <li className='li-End'>Total: {exchanges.map(key => props.celWallets[key].balance).reduce((total, num)=> total+num ).toLocaleString('en-US')} CEL</li>
         </ul>
-        <p></p>
+       
     </div>
+    <div>
+    <p>Lending Rates</p> 
+        <ul>
+          {Object.keys(props.ftxData.result).map(key=> <li key={key}>{key}: {props.ftxData.result[key]}</li>)}
+        </ul>
+    </div>
+
+
     </div>
     <div id="container-Center">
     
@@ -205,6 +216,9 @@ Community Driven, Community Owned
 
 export async function getStaticProps() {
 
+// import ftx api.  
+  
+
 const celContractAddress = '0xaaaebe6fe48e54f431b0c390cfaf0b017d09d42d'
 
 
@@ -242,8 +256,11 @@ const celContractAddress = '0xaaaebe6fe48e54f431b0c390cfaf0b017d09d42d'
 
   let promised = [] 
 
+  
+  let ftxData = {}
   //Blogger
   let data = {}
+  promised.push(ftxConnection())
   promised.push(Blogger('https://www.googleapis.com/blogger/v3/blogs/4828320755593939336/posts?key=AIzaSyB-f9BX75MFT_x65c1-nrK0uWocH-JtCT0'))
   
 
@@ -260,11 +277,15 @@ const celContractAddress = '0xaaaebe6fe48e54f431b0c390cfaf0b017d09d42d'
         //console.log(data)
         continue
       }
+      else if (i.ftx){
+        ftxData=i.ftx
+        continue
+      }
       celWallets[i.walletId].balance=Number(i.total)
     }
   })
 
-  return { props: { data,  celWallets}, revalidate: 60 }
+  return { props: { data,  celWallets, ftxData}, revalidate: 60 }
   // Pass data to the page via props
 
     
